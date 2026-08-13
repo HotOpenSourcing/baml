@@ -141,13 +141,13 @@
   "packageManager": "pnpm@9.12.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "node init && next build",
+    "dev": "node init && next dev",
     "format": "biome format",
     "format:fix": "pnpm format --write",
     "lint": "next lint",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
-    "start": "next start",
+    "start": "node init && next start",
     "test": "node --test --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tests/baml-monarch.test.mjs",
     "typecheck": "tsc --noEmit"
   },

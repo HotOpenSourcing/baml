@@ -4,12 +4,12 @@
   "packageManager": "pnpm@9.12.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --debug",
-    "build": "pnpm run typecheck && vite build",
+    "dev": "node init && vite --debug",
+    "build": "node init && pnpm run typecheck && vite build",
     "release": "pnpm run typecheck && NODE_ENV=production vite build",
     "preview": "NODE_ENV=development vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "node init && storybook build",
     "clean": "git clean -xdf .turbo dist out node_modules",
     "typecheck": "tsc"
   },

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "node ./dist/main.js",
+    "build": "node init && tsc",
+    "start": "node init && node ./dist/main.js",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

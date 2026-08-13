@@ -6,7 +6,7 @@
   "main": "src/index.ts",
   "scripts": {
     "generate": "buf generate ../../baml_language/crates/bridge_ctypes/types",
-    "build": "pnpm run generate",
+    "build": "node init && pnpm run generate",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },

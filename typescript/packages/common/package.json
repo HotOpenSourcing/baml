@@ -13,11 +13,13 @@
   "license": "ISC",
   "scripts": {
     "prebuild": "git clean -xdf dist",
-    "dev": "tsc --watch",
+    "dev": "node init && tsc --watch",
     "clean": "git clean -xdf .turbo node_modules dist",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "devDependencies": {
     "@types/node": "24.0.3",
     "rimraf": "6.0.1",

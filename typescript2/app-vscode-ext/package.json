@@ -116,9 +116,9 @@
   "private": true,
   "publisher": "Boundary",
   "scripts": {
-    "build": "pnpm run typecheck && tsup",
-    "build:cli": "cargo build -p baml_cli --manifest-path ../../baml_language/Cargo.toml",
-    "dev": "tsup --watch --sourcemap",
+    "build": "node init && pnpm run typecheck && tsup",
+    "build:cli": "node init && cargo build -p baml_cli --manifest-path ../../baml_language/Cargo.toml",
+    "dev": "node init && tsup --watch --sourcemap",
     "prebuild": "pnpm run sync:grammar",
     "predev": "pnpm run sync:grammar",
     "sync:grammar": "pnpm --filter @b/pkg-grammar build",

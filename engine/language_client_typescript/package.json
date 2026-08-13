@@ -1,7 +1,7 @@
 {
   "name": "@boundaryml/baml",
   "version": "0.225.0",
-  "description": "BAML v0 — Node.js runtime for baml_client",
+  "description": "BAML v0 \u2014 Node.js runtime for baml_client",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BoundaryML/baml.git",
@@ -73,21 +73,21 @@
   },
   "scripts": {
     "artifacts": "mkdir -p artifacts && napi artifacts",
-    "build": "pnpm build:napi-debug && pnpm build:ts_build && pnpm napi create-npm-dirs && pnpm artifacts",
+    "build": "node init && pnpm build:napi-debug && pnpm build:ts_build && pnpm napi create-npm-dirs && pnpm artifacts",
     "release": "pnpm build:napi-release && pnpm build:ts_build",
-    "build:debug": "pnpm build:napi-debug && pnpm build:ts_build",
-    "build:napi-release": "pnpm build:napi-debug --release",
-    "build:napi-debug": "napi build --js ./native.js --dts ./native.d.ts --platform",
-    "build:ts_build": "tsc ./typescript_src/*.ts --outDir ./ --module nodenext --module nodenext --allowJs --declaration true --declarationMap true || true && pnpm build:ts_build_local",
-    "build:local": "pnpm build:debug && pnpm napi create-npm-dirs && pnpm artifacts",
-    "build:napi-debug-local": "napi build -o ./artifacts --js ./native.js --dts ./native.d.ts --platform",
-    "build:ts_build_local": "tsc ./typescript_src/*.ts --outDir ./artifacts --module nodenext --module nodenext --allowJs --declaration true --declarationMap true || true",
+    "build:debug": "node init && pnpm build:napi-debug && pnpm build:ts_build",
+    "build:napi-release": "node init && pnpm build:napi-debug --release",
+    "build:napi-debug": "node init && napi build --js ./native.js --dts ./native.d.ts --platform",
+    "build:ts_build": "node init && tsc ./typescript_src/*.ts --outDir ./ --module nodenext --module nodenext --allowJs --declaration true --declarationMap true || true && pnpm build:ts_build_local",
+    "build:local": "node init && pnpm build:debug && pnpm napi create-npm-dirs && pnpm artifacts",
+    "build:napi-debug-local": "node init && napi build -o ./artifacts --js ./native.js --dts ./native.d.ts --platform",
+    "build:ts_build_local": "node init && tsc ./typescript_src/*.ts --outDir ./artifacts --module nodenext --module nodenext --allowJs --declaration true --declarationMap true || true",
     "prepublishOnly": "napi create-npm-dirs && pnpm artifacts && napi prepublish --no-gh-release",
     "test": "jest --config jest.config.js",
     "version": "napi version",
     "clean": "git clean -xdf .turbo node_modules target artifacts npm *.node",
     "dev.skip": "cargo watch -x 'build' -s 'pnpm build:napi-debug && pnpm build:ts_build'",
-    "dev": "pnpm run build"
+    "dev": "node init && pnpm run build"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",

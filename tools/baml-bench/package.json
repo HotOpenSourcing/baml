@@ -4,7 +4,7 @@
   "private": true,
   "description": "Convex functions for the baml-bench pipeline",
   "scripts": {
-    "dev": "convex dev",
+    "dev": "node init && convex dev",
     "deploy": "convex deploy"
   },
   "dependencies": {

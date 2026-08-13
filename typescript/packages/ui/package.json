@@ -91,7 +91,7 @@
   "name": "@baml/ui",
   "private": true,
   "scripts": {
-    "dev": "tsc --watch",
+    "dev": "node init && tsc --watch",
     "clean": "git clean -xdf .turbo node_modules dist",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "ui-add": "pnpm dlx shadcn@latest add"

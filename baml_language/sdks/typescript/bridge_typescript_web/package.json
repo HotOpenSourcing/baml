@@ -21,14 +21,16 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build:wasm": "wasm-pack build . --target web --dev --out-dir dist/wasm --out-name bridge_web_core && wasm-pack build . --target bundler --dev --out-dir dist/workerd-wasm --out-name bridge_web_core && node scripts/sync-wasm-declarations.mjs && node scripts/prepare-wasm-package.mjs",
-    "build:wasm:release": "node scripts/build-wasm-release.mjs && node scripts/sync-wasm-declarations.mjs && node scripts/prepare-wasm-package.mjs",
+    "build:wasm": "node init && wasm-pack build . --target web --dev --out-dir dist/wasm --out-name bridge_web_core && wasm-pack build . --target bundler --dev --out-dir dist/workerd-wasm --out-name bridge_web_core && node scripts/sync-wasm-declarations.mjs && node scripts/prepare-wasm-package.mjs",
+    "build:wasm:release": "node init && node scripts/build-wasm-release.mjs && node scripts/sync-wasm-declarations.mjs && node scripts/prepare-wasm-package.mjs",
     "check:wasm-declarations": "node scripts/sync-wasm-declarations.mjs --check",
-    "build:ts": "node scripts/sync-node-runtime.mjs && tsc -p tsconfig.json && node scripts/prepare-workerd-package.mjs",
-    "build": "pnpm build:wasm:release && pnpm build:ts",
-    "build:debug": "pnpm build:wasm && pnpm build:ts",
+    "build:ts": "node init && node scripts/sync-node-runtime.mjs && tsc -p tsconfig.json && node scripts/prepare-workerd-package.mjs",
+    "build": "node init && pnpm build:wasm:release && pnpm build:ts",
+    "build:debug": "node init && pnpm build:wasm && pnpm build:ts",
     "test:web": "vitest run --config vitest.web.config.ts",
     "test:workers": "vitest run --config vitest.workers.config.ts"
   },
